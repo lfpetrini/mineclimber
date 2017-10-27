@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<?php include_once("$_SERVER[DOCUMENT_ROOT]/pageclicks.php"); ?>
 <html>
 <head>
 	<title>Mine Climber</title>
