@@ -13,7 +13,7 @@ Basically, we've got:
 * Game states, each with its own methods for updating, drawing, starting and finishing;
 * A main loop that is called continuously to update and draw the current state.
 
-The main loop is used to update and draw the current game state.
+The main loop is used to update and draw the current game state, and the map is generated procedurally.
 
 Since most of the calculations are done using the current game time, for each loop iteration, if the elapsed time since the last update exceeds the default frame time, then the current game time used is the sum of the last game time + default frame time. This guarantees a better overall consistency.
 
