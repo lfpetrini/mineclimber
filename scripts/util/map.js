@@ -21,7 +21,7 @@ function GameMap(game) {
 	this.bottom = -this.height;
 	this.bottomInPixels = this.bottom * this.tileHeight;
 	this.lastUpdate = 0;
-	this.gravity = 0.01;
+	this.gravityPerMs = 0.0003;
 	this.maxGravity = 0.24
 	this.lastPillarGeneratedX = 0;
 	this.player = null;
@@ -572,7 +572,7 @@ GameMap.prototype.update = function(gameTime) {
 			obj.lastX = obj.x;
 			obj.lastY = obj.y;
 			if(obj.affectedByGravity)
-				obj.velocityY += this.gravity;
+				obj.velocityY += this.gravityPerMs * elapsedTime;
 			if(obj.velocityY > obj.maxVelocityY)
 				obj.velocityY = obj.maxVelocityY;
 			if(obj.velocityX > obj.maxVelocityX)

@@ -57,8 +57,9 @@ MapCamera.prototype.centerAt = function(x, y) {
 
 MapCamera.prototype.update = function() {
 	//var objectsToDestroy = Array();
+	var mapLastUpdate = this.map.lastUpdate;
+	var elapsedTime = mapLastUpdate - this.lastUpdate;
 	for(var i = 0; i < this.objects.length; i++) {
-		var elapsedTime = this.map.lastUpdate - this.lastUpdate;
 		this.objects[i].x += elapsedTime * this.objects[i].velocityX;
 		this.objects[i].y += elapsedTime * this.objects[i].velocityY;
 		if(this.objects[i].deleteCondition())
@@ -71,7 +72,7 @@ MapCamera.prototype.update = function() {
 	}
 	
 	this.objectsToRemove = Array();
-	this.lastUpdate = this.map.lastUpdate;
+	this.lastUpdate = mapLastUpdate;
 }
 
 MapCamera.prototype.draw = function(context, x, y, width, height) {
@@ -95,7 +96,7 @@ MapCamera.prototype.draw = function(context, x, y, width, height) {
 		var timeRemaining = this.map.player.drunkTime - this.map.player.lastUpdate;
 
 		this.maxRotation = Math.min(10, timeRemaining / 1500);
-		this.rotationPerFrame = Math.min(0.8, timeRemaining / 15000);
+		this.rotationPerFrame = Math.min(0.8, timeRemaining / 30000);
 		
 		if(this.clockwise) {
 			if(this.rotation < this.maxRotation)

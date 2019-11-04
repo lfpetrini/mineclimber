@@ -35,7 +35,7 @@ function Player() {
 	this.state = "standing";
 	// States: blocking, attacking, running, standing
 	
-	
+	this.walkingVelocityPerMs = 0.0006;
 	this.maxVelocityXLevelUpRate = 0.01;
 	this.attackLevelUpRate = 2;
 	this.defenseLevelUpRate = 2;
@@ -60,11 +60,11 @@ Player.prototype.update = function(gameTime) {
 		if(this.health < this.maxHealth)
 			this.setHealth(this.health + elapsedTime * this.healthPerMs);
 		if(currentKeys[KEY_LEFT] && this.state != "blocking") {
-			this.velocityX -= 0.02;
+			this.velocityX -= elapsedTime * this.walkingVelocityPerMs;
 			this.lookingLeft = true;
 		}
 		if(currentKeys[KEY_RIGHT] && this.state != "blocking") {
-			this.velocityX += 0.02;
+			this.velocityX += elapsedTime * this.walkingVelocityPerMs;
 			this.lookingLeft = false;
 		}
 		if(currentKeys[KEY_UP] && this.state != "blocking") {

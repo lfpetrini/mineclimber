@@ -1,7 +1,7 @@
 function Game() {
 	this.CANVAS_WIDTH = 600;
 	this.CANVAS_HEIGHT = 600;
-	this.TARGET_FPS = 30;
+	this.TARGET_FPS = 60;
 	this.FRAME_TIME = 1000 / this.TARGET_FPS;
 	this.lastSystemTime = 0;
 	this.gameTime = 0;

@@ -82,7 +82,7 @@ CommonEnemy.prototype.update = function(gameTime) {
 						}
 					}
 					else
-						this.velocityX -= 0.025;
+						this.velocityX -= 0.00075 * elapsedTime;
 				}
 				this.lookingLeft = true;
 			}
@@ -103,24 +103,24 @@ CommonEnemy.prototype.update = function(gameTime) {
 						}
 					}
 					else
-						this.velocityX += 0.025;
+						this.velocityX += 0.00075 * elapsedTime;
 				}
 				this.lookingLeft = false;
 			} // these last lines change the way the mob is running if it stays standing still for over 500ms
 			// so they can't be 'trapped' against a wall
 			else if(gameTime - this.stateStart < 500) {
 				if(this.lookingLeft) 
-					this.velocityX -= 0.025;
+					this.velocityX -= 0.00075 * elapsedTime;
 				else
-					this.velocityX += 0.025;
+					this.velocityX += 0.00075 * elapsedTime;
 			}
 			else {
 				if(this.lookingLeft) {
-					this.velocityX += 0.025;
+					this.velocityX += 0.00075 * elapsedTime;
 					this.lookingLeft = false;
 				}
 				else {
-					this.velocityX -= 0.025;
+					this.velocityX -= 0.00075 * elapsedTime;
 					this.lookingLeft = true;
 				}
 				this.stateStart = gameTime;
